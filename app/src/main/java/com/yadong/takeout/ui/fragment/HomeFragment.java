@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import com.yadong.takeout.R;
 
 /**
- * Created by Administrator on 2017/1/8.
+ * home,相对布局实现
+ * 上面是沉浸式状态栏
+ * 下面是recycleView
  */
 
 public class HomeFragment extends  BaseFragment{
@@ -19,5 +21,11 @@ public class HomeFragment extends  BaseFragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
     }
 }
