@@ -1,6 +1,5 @@
 package com.yadong.takeout.ui.activity;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.yadong.takeout.R;
+import com.yadong.takeout.dagger.component.app.AppComponent;
 import com.yadong.takeout.ui.fragment.HomeFragment;
 import com.yadong.takeout.ui.fragment.MoreFragment;
 import com.yadong.takeout.ui.fragment.OrderFragment;
@@ -16,7 +16,6 @@ import com.yadong.takeout.ui.fragment.UserFragment;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import static com.yadong.takeout.R.id.main_fragment_container;
 
@@ -35,12 +34,22 @@ public class MainActivity extends BaseActivity {
     private ArrayList<Fragment> mFragments;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    public int setLayout() {
+        return R.layout.activity_main;
+    }
 
+    @Override
+    public void initInjector(AppComponent appComponent) {
 
+    }
+
+    @Override
+    public void initViews() {
+
+    }
+
+    @Override
+    public void updateViews() {
         initData();
         initListener();
     }

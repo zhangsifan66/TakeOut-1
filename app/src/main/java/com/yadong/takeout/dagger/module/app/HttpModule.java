@@ -1,10 +1,14 @@
-package com.yadong.takeout.utils;
+package com.yadong.takeout.dagger.module.app;
 
-import android.content.Context;
+
+import com.yadong.takeout.model.net.request.ApiService;
 
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Cache;
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -12,45 +16,53 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Retrofit工具类,在Application中初始化,然后就可以直接调用了
+ * App级别的Module,用于网络请求
  */
 
-public class RetrofitUtils {
+@Module
+public class HttpModule {
 
-    private static Retrofit retrofit;
 
-    public void initOkHttp(Context context) {
+//    private Context context;
+//
+//    public HttpModule(Context context){
+//        this.context=context;
+//    }
+
+    @Provides
+    @Singleton
+    public OkHttpClient provideOkhttpClient() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)       //设置连接超时
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)          //设置读取超时
                 .writeTimeout(10000L, TimeUnit.MILLISECONDS)         //设置写入超时
-                .cache(new Cache(context.getCacheDir(), 10 * 1024 * 1024))   //设置缓存目录和10M缓存
+                // .cache(new Cache(context.getCacheDir(), 10 * 1024 * 1024))   //设置缓存目录和10M缓存
                 .addInterceptor(interceptor)    //添加日志拦截器（该方法也可以设置公共参数，头信息）
                 .build();
 
+        return client;
+    }
 
-        retrofit = new Retrofit.Builder()
+    @Provides
+    @Singleton
+    public Retrofit provideRetrofit(OkHttpClient client) {
+        Retrofit retrofit = new Retrofit.Builder()
                 .client(client)        //设置OkHttp
-                .baseUrl(Constants.BASE_URL)
+                .baseUrl(ApiService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()) //  添加数据解析ConverterFactory
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())   //添加RxJava
                 .build();
 
-
+        return retrofit;
     }
 
-    public static <S> S createService(Class<S> serviceClass) {
-        return retrofit.create(serviceClass);
+    @Provides
+    @Singleton
+    public ApiService provideApiService(Retrofit retrofit) {
+        return retrofit.create(ApiService.class);
     }
 
-    public static RetrofitUtils getInstance() {
-        return SingleLoader.INSTANCE;
-    }
-
-    private static class SingleLoader {
-        private static final RetrofitUtils INSTANCE = new RetrofitUtils();
-    }
 
 }
