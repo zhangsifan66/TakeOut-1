@@ -55,6 +55,8 @@ dependencies {
 
     compile 'com.orhanobut:logger:1.15'
 
+    // 添加OrmLite依赖
+    compile 'com.j256.ormlite:ormlite-android:5.0'
 
     // recyclerview引入
     compile 'com.android.support:recyclerview-v7:25.1.0'
