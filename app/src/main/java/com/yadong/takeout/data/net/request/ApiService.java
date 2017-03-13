@@ -1,4 +1,4 @@
-package com.yadong.takeout.model.net.request;
+package com.yadong.takeout.data.net.request;
 
 
 /**

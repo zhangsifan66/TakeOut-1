@@ -1,7 +1,7 @@
 package com.yadong.takeout.dagger.module.app;
 
 
-import com.yadong.takeout.model.net.request.ApiService;
+import com.yadong.takeout.data.net.request.ApiService;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,4 +1,4 @@
-package com.yadong.takeout.model.dao.bean;
+package com.yadong.takeout.data.db.bean;
 
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;

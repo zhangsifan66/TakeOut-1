@@ -1,4 +1,4 @@
-package com.yadong.takeout.model.dao;
+package com.yadong.takeout.data.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.yadong.takeout.model.dao.bean.AddressBean;
-import com.yadong.takeout.model.dao.bean.UserBean;
+import com.yadong.takeout.data.db.bean.AddressBean;
+import com.yadong.takeout.data.db.bean.UserBean;
 import com.yadong.takeout.ui.app.App;
 import com.yadong.takeout.utils.Constants;
 

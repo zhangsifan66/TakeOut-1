@@ -3,7 +3,7 @@ package com.yadong.takeout.dagger.component.app;
 
 import com.yadong.takeout.dagger.module.app.AppModule;
 import com.yadong.takeout.dagger.module.app.HttpModule;
-import com.yadong.takeout.model.net.request.ApiService;
+import com.yadong.takeout.data.net.request.ApiService;
 import com.yadong.takeout.ui.app.App;
 
 import javax.inject.Singleton;
