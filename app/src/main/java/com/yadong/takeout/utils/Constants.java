@@ -6,5 +6,5 @@ package com.yadong.takeout.utils;
 
 public interface Constants {
 
-    String BASE_URL="http://www.kuaidi100.com";
+    String PREFERENCE_NAME = "MyConfig";//Sp存储的文件的名字
 }
