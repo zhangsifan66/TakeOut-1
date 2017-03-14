@@ -2,6 +2,7 @@ package com.yadong.takeout.ui.fragment;
 
 import com.yadong.takeout.R;
 import com.yadong.takeout.dagger.component.app.AppComponent;
+import com.yadong.takeout.presenter.contract.HomeContract;
 
 /**
  * home,相对布局实现
@@ -9,7 +10,7 @@ import com.yadong.takeout.dagger.component.app.AppComponent;
  * 下面是recycleView
  */
 
-public class HomeFragment extends  BaseFragment{
+public class HomeFragment extends  BaseFragment implements HomeContract.View{
 
 
     @Override
@@ -29,6 +30,12 @@ public class HomeFragment extends  BaseFragment{
 
     @Override
     public void updateViews() {
+
+    }
+
+    @Override
+    public void show() {
+
 
     }
 }

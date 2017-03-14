@@ -5,4 +5,14 @@ package com.yadong.takeout.presenter.contract;
  */
 
 public interface HomeContract {
+
+    interface  View{
+        void  show();
+    }
+
+    interface  Presenter{
+
+        void getData();
+    }
+
 }
