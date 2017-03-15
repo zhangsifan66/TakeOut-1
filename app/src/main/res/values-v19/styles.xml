@@ -1,12 +1,20 @@
 <resources>
 
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
+    <style name="AppBaseTheme" parent="BaseTheme">
+        <!-- .Android4.4版本才有windowTranslucentStatus属性，
+              在res文件夹下创建一个新的文件夹value-v19并新建
+              此时该页面可以拉伸到顶部状态栏，并且定义顶部状态栏透明
+              实现了沉浸式状态栏 -->
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-
     </style>
 
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="android:windowBackground">@mipmap/ic_github</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
 
 </resources>

@@ -1,7 +1,34 @@
 <resources>
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">false</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppBaseTheme" parent="BaseTheme">
+        <!--这是文本的主要颜色，用于工具栏标题-->
+        <!--<item name="android:textColorPrimary">@color/toolbar_text</item>-->
+        <!--这是次文本的主要颜色，用于工具栏次标题-->
+        <!--<item name="android:textColorSecondary">@color/toolbar_text</item>-->
+        <!--分割线颜色-->
+        <!--<item name="android:divider">@color/divider_line</item>-->
+        <!--<item name="android:windowBackground">@color/window_background</item>-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--<item name="android:windowAnimationStyle">@style/slide_right_entry</item>-->
+    </style>
+
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 用这张图这样会变形，不知是分辨率问题还是怎么着 -->
+        <!--<item name="android:windowBackground">@mipmap/ic_github</item>-->
     </style>
 
 </resources>
