@@ -15,12 +15,19 @@ public class PreferenceUtils {
 
     private static SharedPreferences sp;
 
-    private PreferenceUtils(){}
+    private PreferenceUtils() {
+    }
+
     private static Context context = App.getInstance();
 
     private static SharedPreferences initSharedPreference() {
         if (sp == null) {
-            sp = context.getSharedPreferences(Constants.PREFERENCE_NAME, Context.MODE_PRIVATE);
+            synchronized (PreferenceUtils.class) {
+                if (sp == null) {
+                    sp = context.getSharedPreferences(Constants.PREFERENCE_NAME,
+                            Context.MODE_PRIVATE);
+                }
+            }
         }
         return sp;
     }
