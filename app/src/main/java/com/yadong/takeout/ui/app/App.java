@@ -2,10 +2,11 @@ package com.yadong.takeout.ui.app;
 
 import android.app.Application;
 
-import com.yadong.takeout.dagger.component.app.AppComponent;
-import com.yadong.takeout.dagger.component.app.DaggerAppComponent;
-import com.yadong.takeout.dagger.module.app.AppModule;
-import com.yadong.takeout.dagger.module.app.HttpModule;
+import com.yadong.takeout.dagger.component.AppComponent;
+import com.yadong.takeout.dagger.component.DaggerAppComponent;
+import com.yadong.takeout.dagger.module.AppModule;
+import com.yadong.takeout.dagger.module.HttpModule;
+
 
 /**
  *

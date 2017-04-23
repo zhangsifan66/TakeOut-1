@@ -1,7 +1,8 @@
 package com.yadong.takeout.ui.fragment;
 
 import com.yadong.takeout.R;
-import com.yadong.takeout.dagger.component.app.AppComponent;
+import com.yadong.takeout.dagger.component.AppComponent;
+
 
 /**
  *

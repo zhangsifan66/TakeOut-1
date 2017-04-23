@@ -3,7 +3,7 @@ package com.yadong.takeout.ui.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.yadong.takeout.dagger.component.app.AppComponent;
+import com.yadong.takeout.dagger.component.AppComponent;
 import com.yadong.takeout.ui.app.App;
 
 import butterknife.ButterKnife;

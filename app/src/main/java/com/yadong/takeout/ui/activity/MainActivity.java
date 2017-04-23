@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.yadong.takeout.R;
-import com.yadong.takeout.dagger.component.app.AppComponent;
+import com.yadong.takeout.dagger.component.AppComponent;
 import com.yadong.takeout.ui.fragment.HomeFragment;
 import com.yadong.takeout.ui.fragment.MoreFragment;
 import com.yadong.takeout.ui.fragment.OrderFragment;

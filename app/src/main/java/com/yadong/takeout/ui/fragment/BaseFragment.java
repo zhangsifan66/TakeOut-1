@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.yadong.takeout.dagger.component.app.AppComponent;
+import com.yadong.takeout.dagger.component.AppComponent;
 import com.yadong.takeout.ui.app.App;
 
 import butterknife.ButterKnife;

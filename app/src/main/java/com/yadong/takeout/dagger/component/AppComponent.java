@@ -1,10 +1,10 @@
-package com.yadong.takeout.dagger.component.app;
+package com.yadong.takeout.dagger.component;
 
+import android.app.Application;
 
-import com.yadong.takeout.dagger.module.app.AppModule;
-import com.yadong.takeout.dagger.module.app.HttpModule;
+import com.yadong.takeout.dagger.module.AppModule;
+import com.yadong.takeout.dagger.module.HttpModule;
 import com.yadong.takeout.data.net.request.ApiService;
-import com.yadong.takeout.ui.app.App;
 
 import javax.inject.Singleton;
 
@@ -23,6 +23,6 @@ public interface AppComponent {
     ApiService getApiService();
 
     //作为桥接而已,要不然引用这个Component的那个component拿不到这个对象
-    App getMyApplication();
+    Application getMyApplication();
 
 }
