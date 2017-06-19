@@ -1,4 +1,4 @@
-package com.yadong.takeout.ui.app;
+package com.yadong.takeout.common.app;
 
 import android.app.Application;
 

@@ -1,4 +1,4 @@
-package com.yadong.takeout.utils;
+package com.yadong.takeout.common.utils;
 
 import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;

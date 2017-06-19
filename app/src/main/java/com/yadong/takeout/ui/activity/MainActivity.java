@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 
-import static com.yadong.takeout.R.id.main_fragment_container;
 
 /**
  * 主Activity,Fragment+导航栏的结构
@@ -25,7 +24,7 @@ import static com.yadong.takeout.R.id.main_fragment_container;
 public class MainActivity extends BaseActivity {
 
 
-    @BindView(main_fragment_container)
+    @BindView(R.id.main_fragment_container)
     FrameLayout mFragmentContainer;
 
     @BindView(R.id.main_bottome_switcher_container)
@@ -74,7 +73,7 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    private View.OnClickListener onClickListener =new View.OnClickListener() {
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             //得到当前点击的状态栏的  索引(得到这个索引是为了不但要设置自己的状态,还要设置其他导航栏的状态)
@@ -87,24 +86,24 @@ public class MainActivity extends BaseActivity {
     private void changeFragment(int indexOfChild) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.main_fragment_container,mFragments.get(indexOfChild))
+                .replace(R.id.main_fragment_container, mFragments.get(indexOfChild))
                 .commit();
     }
 
     /**
      * 改变被点击的自己的ui,同时改变其他导航栏的ui
      * 被点击的状态栏 : 不可以在点击
-     * 另外的状态栏   : 可以点击
+     * 另外的状态栏  : 可以点击
      */
     private void changeUI(int indexOfChild) {
         int childCount = mSwitcherContainer.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            if(i==indexOfChild){
+            if (i == indexOfChild) {
                 //不可以在点击
-                setEnable(mSwitcherContainer.getChildAt(i),false);
-            }else{
+                setEnable(mSwitcherContainer.getChildAt(i), false);
+            } else {
                 //另外的状态栏  可以点击
-                setEnable(mSwitcherContainer.getChildAt(i),true);
+                setEnable(mSwitcherContainer.getChildAt(i), true);
             }
         }
     }
@@ -116,11 +115,11 @@ public class MainActivity extends BaseActivity {
     private void setEnable(View item, boolean b) {
         item.setEnabled(b);
         //循环遍历 每个导航栏里面的 内容
-        if(item instanceof ViewGroup){
+        if (item instanceof ViewGroup) {
             int childCount = ((ViewGroup) item).getChildCount();
             for (int i = 0; i < childCount; i++) {
                 View childAt = ((ViewGroup) item).getChildAt(i);
-                setEnable(childAt,b);
+                setEnable(childAt, b);
             }
         }
     }

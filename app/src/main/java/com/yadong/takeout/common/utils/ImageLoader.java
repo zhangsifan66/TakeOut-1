@@ -1,4 +1,4 @@
-package com.yadong.takeout.utils;
+package com.yadong.takeout.common.utils;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;

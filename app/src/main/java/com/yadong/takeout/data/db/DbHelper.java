@@ -8,8 +8,8 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.yadong.takeout.data.db.bean.AddressBean;
 import com.yadong.takeout.data.db.bean.UserBean;
-import com.yadong.takeout.ui.app.App;
-import com.yadong.takeout.utils.Constants;
+import com.yadong.takeout.common.app.App;
+import com.yadong.takeout.common.utils.Constants;
 
 import java.sql.SQLException;
 

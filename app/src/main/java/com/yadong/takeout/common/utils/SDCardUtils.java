@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yadong.takeout.utils;
+package com.yadong.takeout.common.utils;
 
 import android.os.Build;
 import android.os.Environment;

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yadong.takeout.dagger.component.AppComponent;
-import com.yadong.takeout.ui.app.App;
+import com.yadong.takeout.common.app.App;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

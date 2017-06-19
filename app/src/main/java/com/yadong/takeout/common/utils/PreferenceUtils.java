@@ -1,4 +1,4 @@
-package com.yadong.takeout.utils;
+package com.yadong.takeout.common.utils;
 
 /**
  * Sp工具类
@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.yadong.takeout.ui.app.App;
+import com.yadong.takeout.common.app.App;
 
 
 public class PreferenceUtils {
@@ -18,7 +18,7 @@ public class PreferenceUtils {
     private PreferenceUtils() {
     }
 
-    private static Context context = App.getInstance();
+    private static  Context context = App.getInstance();
 
     private static SharedPreferences initSharedPreference() {
         if (sp == null) {

@@ -1,4 +1,4 @@
-package com.yadong.takeout.utils;
+package com.yadong.takeout.common.utils;
 
 import org.greenrobot.eventbus.EventBus;
 
