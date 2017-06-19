@@ -5,12 +5,10 @@ import com.yadong.takeout.dagger.component.AppComponent;
 
 
 /**
- *
  * 订单
  */
 
-public class OrderFragment extends  BaseFragment{
-
+public class OrderFragment extends BaseFragment {
 
 
     @Override

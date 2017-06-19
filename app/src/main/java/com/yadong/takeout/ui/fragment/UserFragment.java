@@ -8,7 +8,7 @@ import com.yadong.takeout.dagger.component.AppComponent;
  * 个人
  */
 
-public class UserFragment extends  BaseFragment{
+public class UserFragment extends BaseFragment {
 
 
     @Override

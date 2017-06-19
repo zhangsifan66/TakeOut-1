@@ -5,11 +5,10 @@ import com.yadong.takeout.dagger.component.AppComponent;
 
 
 /**
- *
  * 更多
  */
 
-public class MoreFragment extends  BaseFragment{
+public class MoreFragment extends BaseFragment {
 
     @Override
     public int setLayout() {

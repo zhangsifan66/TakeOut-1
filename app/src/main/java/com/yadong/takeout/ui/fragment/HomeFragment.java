@@ -10,7 +10,7 @@ import com.yadong.takeout.presenter.contract.HomeContract;
  * 下面是recycleView
  */
 
-public class HomeFragment extends  BaseFragment implements HomeContract.View{
+public class HomeFragment extends BaseFragment implements HomeContract.View {
 
 
     @Override
