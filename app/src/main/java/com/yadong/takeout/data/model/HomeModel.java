@@ -1,27 +1,31 @@
 package com.yadong.takeout.data.model;
 
+
+import com.yadong.takeout.common.utils.GsonUtil;
+import com.yadong.takeout.common.utils.LocalJson;
+import com.yadong.takeout.data.net.bean.HomeInfo;
+import com.yadong.takeout.data.net.request.ApiService;
+
+import io.reactivex.Observable;
+
 /**
  *
- *
- * M层接口
- *
- * 接口的目的:
- * 让实现类实现并能通过回调接口把数据传给P层
- *
  */
-public interface HomeModel {
+public class HomeModel {
 
-    //获取数据
-    void getRecommendData(String jsonParam,RecommendCallBack callBack);
+    private ApiService mApiService;
 
-    //回调接口,把数据传递出去
-    interface  RecommendCallBack{
-        void requestSuccess();
-        void requestFail(String  msg);
+    public HomeModel(ApiService apiService) {
+        this.mApiService = apiService;
     }
 
-
-
-
-
+    /**
+     * 用假数据代替
+     */
+    public Observable<HomeInfo> getHomeData() {
+        HomeInfo info = GsonUtil.processJSON(LocalJson.HOME_JSON.trim(), HomeInfo.class);
+        return Observable.just(info);
+        //正常的写下面的代码
+//      return mApiService.getHomeData();
+    }
 }

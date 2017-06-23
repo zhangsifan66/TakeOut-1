@@ -1,18 +1,18 @@
 package com.yadong.takeout.presenter.contract;
 
-/**
- * Created by Administrator on 2017/3/13.
- */
+import com.yadong.takeout.data.net.bean.HomeInfo;
 
+/**
+ *
+ */
 public interface HomeContract {
 
-    interface  View{
-        void  show();
+    interface View {
+        void showHomeData(HomeInfo homeInfo,String msg);
     }
 
-    interface  Presenter{
-
-        void getData();
+    interface Presenter {
+        void getHomeData();
     }
 
 }
