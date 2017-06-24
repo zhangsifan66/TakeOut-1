@@ -4,13 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
-import com.squareup.picasso.Picasso;
 import com.yadong.takeout.R;
 import com.yadong.takeout.common.app.App;
 import com.yadong.takeout.data.net.bean.HomeInfo;
@@ -40,18 +38,14 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         } else {
             HomeInfo.DataBean.BodyBean bodyBean = mHomeInfo.data.body.get(position - 1);
             int type = bodyBean.type;
-            if (type == 0) {
-                return TYPE_SELLER;
-            } else {
-                return TYPE_RECOMMEND;
-            }
+            return type == 0 ? TYPE_SELLER : TYPE_RECOMMEND;
         }
     }
 
     @Override
     public int getItemCount() {
         int count;
-        if (mHomeInfo==null ||mHomeInfo.data == null) {
+        if (mHomeInfo == null || mHomeInfo.data == null) {
             count = 0;
         } else {
             count = mHomeInfo.data.body.size() + 1;
@@ -135,13 +129,12 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     if (i % 2 == 0) {
                         // 每个条目中的第一个元素
                         item = View.inflate(App.getInstance(), R.layout.item_home_head_category, null);
-                        Picasso.with(App.getInstance()).load(category.pic).into((ImageView) item.findViewById(R.id.top_iv));
+                        //Picasso.with(App.getInstance()).load(category.pic).into((ImageView) item.findViewById(R.id.top_iv));
                         ((TextView) item.findViewById(R.id.top_tv)).setText(category.name);
                         categoryContainer.addView(item);
                     }
-
                     if (i % 2 != 0) {
-                        Picasso.with(App.getInstance()).load(category.pic).into((ImageView) item.findViewById(R.id.bottom_iv));
+                        //Picasso.with(App.getInstance()).load(category.pic).into((ImageView) item.findViewById(R.id.bottom_iv));
                         ((TextView) item.findViewById(R.id.bottom_tv)).setText(category.name);
                     }
                 }

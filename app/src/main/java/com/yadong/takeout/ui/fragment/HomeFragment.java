@@ -65,6 +65,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     @Override
     public void initViews() {
+        sumY=0;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mHomeAdapter = new HomeAdapter();
         mRecyclerView.setAdapter(mHomeAdapter);
@@ -84,12 +85,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
             case R.id.ll_title_container:
                 break;
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
     }
 
     @Override
