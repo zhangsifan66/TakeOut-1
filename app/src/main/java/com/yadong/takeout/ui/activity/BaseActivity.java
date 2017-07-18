@@ -3,8 +3,9 @@ package com.yadong.takeout.ui.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.yadong.takeout.dagger.component.AppComponent;
+import com.umeng.analytics.MobclickAgent;
 import com.yadong.takeout.common.app.App;
+import com.yadong.takeout.dagger.component.AppComponent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -65,5 +66,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (mUnbinder != Unbinder.EMPTY) {
             mUnbinder.unbind();
         }
+    }
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 }

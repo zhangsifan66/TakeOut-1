@@ -43,6 +43,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     @Inject
     HomePresenter mHomePresenter;
+
     private HomeAdapter mHomeAdapter;
     private float sumY = 0;
     private float duration = 150.0f;//在0-150之间去改变头部的透明度
