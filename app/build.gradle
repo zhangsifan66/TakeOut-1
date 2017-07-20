@@ -19,10 +19,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //多渠道打包
+    productFlavors {
+        anzhi {
+            manifestPlaceholders = [UM_CHANNBL_ID: "anzhi"]
+        }
+        yingyonghui {
+            manifestPlaceholders = [UM_CHANNBL_ID: "yingyonghui"]
+        }
+        wandoujia {
+            manifestPlaceholders = [UM_CHANNBL_ID: "wandoujia"]
+        }
+        google {
+            manifestPlaceholders = [UM_CHANNBL_ID: "google"]
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -55,7 +70,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
-
     //other
     compile 'com.orhanobut:logger:1.15'
     compile 'org.greenrobot:eventbus:3.0.0'
@@ -64,13 +78,14 @@ dependencies {
     compile 'com.liaoinstan.springview:library:1.2.6'
 
     //大图轮播的库
-//    compile 'com.android.support:support-v4:+'
+    //    compile 'com.android.support:support-v4:+'
     compile 'com.daimajia.slider:library:1.1.5@aar'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.squareup.picasso:picasso:2.3.2'
 
-
     // 添加OrmLite依赖
     compile 'com.j256.ormlite:ormlite-android:5.0'
 
+    //友盟
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

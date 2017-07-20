@@ -2,6 +2,7 @@ package com.yadong.takeout.common.app;
 
 import android.app.Application;
 
+import com.umeng.analytics.MobclickAgent;
 import com.yadong.takeout.dagger.component.AppComponent;
 import com.yadong.takeout.dagger.component.DaggerAppComponent;
 import com.yadong.takeout.dagger.module.AppModule;
@@ -21,7 +22,16 @@ public class App extends Application {
         super.onCreate();
         instance = this;
 
+        initSdk();
         initInjector();
+    }
+
+    /**
+     * 初始化SDK
+     */
+    private void initSdk() {
+        //友盟统计和多渠道打包
+        MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType. E_UM_NORMAL);
     }
 
     /**
