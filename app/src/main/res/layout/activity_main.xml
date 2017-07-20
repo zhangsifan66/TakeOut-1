@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal">
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -23,7 +24,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:src="@drawable/home" />
+                android:src="@drawable/home"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -31,9 +32,10 @@
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:text="首页"
-                android:textColor="@color/main_bottom_tv_color" />
+                android:textColor="@color/main_bottom_tv_color"/>
 
         </FrameLayout>
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -42,7 +44,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:src="@drawable/order" />
+                android:src="@drawable/order"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -50,8 +52,9 @@
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:text="订单"
-                android:textColor="@color/main_bottom_tv_color" />
+                android:textColor="@color/main_bottom_tv_color"/>
         </FrameLayout>
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -60,7 +63,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:src="@drawable/me" />
+                android:src="@drawable/me"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -68,8 +71,9 @@
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:text="个人"
-                android:textColor="@color/main_bottom_tv_color" />
+                android:textColor="@color/main_bottom_tv_color"/>
         </FrameLayout>
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -78,7 +82,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:src="@drawable/more" />
+                android:src="@drawable/more"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -86,7 +90,7 @@
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:text="更多"
-                android:textColor="@color/main_bottom_tv_color" />
+                android:textColor="@color/main_bottom_tv_color"/>
         </FrameLayout>
     </LinearLayout>
 </LinearLayout>

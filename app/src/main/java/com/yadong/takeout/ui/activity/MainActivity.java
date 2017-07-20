@@ -1,6 +1,7 @@
 package com.yadong.takeout.ui.activity;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -22,7 +23,6 @@ import butterknife.BindView;
  * 主Activity,Fragment+导航栏的结构
  */
 public class MainActivity extends BaseActivity {
-
 
     @BindView(R.id.main_fragment_container)
     FrameLayout mFragmentContainer;
@@ -83,7 +83,33 @@ public class MainActivity extends BaseActivity {
         }
     };
 
+    /**
+     * 每次切换,先把全部的fragment个隐藏掉,在去添加当前的fragment,并显示
+     * @param indexOfChild
+     */
     private void changeFragment(int indexOfChild) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        //把所有的fragment先隐藏
+        for (int x = 0; x < mFragments.size(); x++) {
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(x + "");
+            if (fragment != null) {
+                transaction.hide(fragment);
+            }
+        }
+
+        Fragment fragment = mFragments.get(indexOfChild);
+        //如果当前的fragment没有被添加
+        if (!fragment.isAdded()) {
+            transaction.add(R.id.main_fragment_container, mFragments.get(indexOfChild), indexOfChild + "");
+        }
+        transaction.show(fragment).commit();
+    }
+
+    /**
+     * 每次切换,都是用replace方式去进行一个添加
+     * @param indexOfChild
+     */
+    private void _changeFragment(int indexOfChild) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.main_fragment_container, mFragments.get(indexOfChild))
@@ -123,6 +149,5 @@ public class MainActivity extends BaseActivity {
             }
         }
     }
-
 
 }
