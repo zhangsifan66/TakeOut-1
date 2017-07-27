@@ -1,5 +1,6 @@
 package com.yadong.takeout.ui.adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.yadong.takeout.R;
 import com.yadong.takeout.common.app.App;
 import com.yadong.takeout.data.net.bean.HomeInfo;
+import com.yadong.takeout.ui.activity.SellerDetailActivity;
 
 /**
  * 首页的adapter
@@ -148,14 +150,27 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     class SellerHolder extends RecyclerView.ViewHolder {
         private TextView tvTitle;
         private TextView tvCount;
+        private  HomeInfo.DataBean.BodyBean.SellerBean seller;
 
         public SellerHolder(View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
             tvCount = (TextView) itemView.findViewById(R.id.tv_count);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(App.getInstance(), SellerDetailActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);// 由于使用了Application的上下文，需要增加该配置信息（错误日志中会提示）
+                    intent.putExtra("seller_id", seller.id);
+                    intent.putExtra("name", seller.name);
+                    App.getInstance().startActivity(intent);
+                }
+            });
         }
 
         public void setData(HomeInfo.DataBean.BodyBean.SellerBean seller) {
+            this.seller=seller;
             tvTitle.setText(seller.name);
         }
     }
