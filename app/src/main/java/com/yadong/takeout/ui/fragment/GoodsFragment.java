@@ -31,7 +31,10 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
  *
  */
 
-public class GoodsFragment extends BaseFragment implements GoodsContract.View, AdapterView.OnItemClickListener, AbsListView.OnScrollListener {
+public class GoodsFragment extends BaseFragment implements
+        GoodsContract.View,
+        AdapterView.OnItemClickListener,
+        AbsListView.OnScrollListener {
 
     @BindView(R.id.lv_left)
     ListView mLeftLv;
@@ -51,12 +54,11 @@ public class GoodsFragment extends BaseFragment implements GoodsContract.View, A
     private List<StoreMealInfo.GoodsTypeInfo> mHeadData = new ArrayList<>();//头数据集合
     private List<StoreMealInfo.GoodsTypeInfo.GoodsInfo> mBodyData = new ArrayList<>();//普通数据集合
     private MyHeadAdapter mHeadAdapter;
-    private MyGroupAdapter mGroupAdapter;
 
     /**
      * 看是否是用户主动在滑动列表
      */
-    private boolean isScroll=false;
+    private boolean isScroll = false;
 
     @Override
     public int setLayout() {
@@ -96,8 +98,6 @@ public class GoodsFragment extends BaseFragment implements GoodsContract.View, A
 
     /**
      * 处理数据并增加自己这边需要用到的字段到 集合中
-     *
-     * @param data
      */
     private void handleData(List<StoreMealInfo.GoodsTypeInfo> data) {
         mHeadData.clear();
@@ -135,7 +135,7 @@ public class GoodsFragment extends BaseFragment implements GoodsContract.View, A
      * 展示右侧的list
      */
     private void showGroupList() {
-        mGroupAdapter = new MyGroupAdapter(mHeadData, mBodyData);
+        MyGroupAdapter mGroupAdapter = new MyGroupAdapter(mHeadData, mBodyData);
         mGroupLv.setAdapter(mGroupAdapter);
         //右侧list的滑动监听
         mGroupLv.setOnScrollListener(this);
@@ -154,23 +154,24 @@ public class GoodsFragment extends BaseFragment implements GoodsContract.View, A
         //右侧列表 跟着滚动定位
         mGroupLv.setSelection(groupFirstIndex);
 
-        isScroll=false;
+        isScroll = false;
     }
 
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
-        /**
+        /*
          * 看是否是用户主动在滑动列表,要不然会出现刷新adapter多次
          * 因为一点击左边头条目,右侧就会跟着动,跟着动就会触发监听,
          * 然后又刷新左侧adapter,而且这个scroll监听很频繁,会一直刷新左边列表
          */
-        isScroll=true;
+        isScroll = true;
     }
 
     @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+    public void onScroll(AbsListView view, int firstVisibleItem,
+                         int visibleItemCount, int totalItemCount) {
         //如果是用户主动在滑列表,才会去定位左侧的头条目
-        if(isScroll){
+        if (isScroll) {
             StoreMealInfo.GoodsTypeInfo.GoodsInfo data = mBodyData.get(firstVisibleItem);
             // 当前正在置顶显示的头高亮处理
             mHeadAdapter.setSelectedPosition(data.headIndex);
