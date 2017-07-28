@@ -76,9 +76,10 @@ dependencies {
 
     //自定义的下拉刷新和上拉加载库(很牛b)
     compile 'com.liaoinstan.springview:library:1.2.6'
+    // 分组显示数据的三方控件
+    compile 'se.emilsjolander:stickylistheaders:2.7.0'
 
     //大图轮播的库
-    //    compile 'com.android.support:support-v4:+'
     compile 'com.daimajia.slider:library:1.1.5@aar'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.squareup.picasso:picasso:2.3.2'

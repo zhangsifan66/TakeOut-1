@@ -1,6 +1,7 @@
 package com.yadong.takeout.data.net.request;
 
 import com.yadong.takeout.data.net.bean.HomeInfo;
+import com.yadong.takeout.data.net.bean.StoreMealInfo;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -25,14 +26,19 @@ public interface ApiService {
     String ORDER = "TakeoutService/order";
     String PAY = "TakeoutService/pay";
 
-    // 短信登陆的分类值
-    int LOGIN_TYPE_SMS = 2;
 
     /**
      * 获取首页数据
      */
     @GET(HOME)
     Observable<HomeInfo> getHomeData();
+
+
+    /**
+     * 获取商铺详情页面的数据
+     */
+    @GET(GOODS)
+    Observable<StoreMealInfo> getGoodsData();
 
 
 }

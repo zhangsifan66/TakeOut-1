@@ -5,4 +5,6 @@
     <color name="colorPrimary">#009688</color>
     <color name="colorPrimaryDark">#009688</color>
     <color name="colorAccent">#5677fc</color>
+
+    <color name="colorItemBg">#EEEEEE</color>
 </resources>
