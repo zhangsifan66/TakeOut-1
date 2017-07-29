@@ -1,11 +1,13 @@
 package com.yadong.takeout.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
 import com.yadong.takeout.R;
+import com.yadong.takeout.common.utils.UiUtils;
 import com.yadong.takeout.dagger.component.AppComponent;
 import com.yadong.takeout.ui.adapter.SellerDetailAdapter;
 
@@ -79,5 +81,15 @@ public class SellerDetailActivity extends BaseActivity {
         mTabs.setupWithViewPager(mViewPager);
     }
 
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        // 获取到状态栏的高度
+        Rect outRect = new Rect();
+        this.getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
+        UiUtils.STATUE_BAR_HEIGHT = outRect.top;// 状态栏的高度
+
+    }
 
 }

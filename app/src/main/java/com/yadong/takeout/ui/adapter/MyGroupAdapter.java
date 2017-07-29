@@ -12,12 +12,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
 import com.yadong.takeout.R;
 import com.yadong.takeout.common.app.App;
 import com.yadong.takeout.common.utils.AnimationUtils;
 import com.yadong.takeout.common.utils.NumberFormatUtils;
 import com.yadong.takeout.common.utils.ShoppingCartManager;
+import com.yadong.takeout.common.utils.UiUtils;
 import com.yadong.takeout.data.net.bean.StoreMealInfo;
 
 import java.util.List;
@@ -202,19 +204,20 @@ public class MyGroupAdapter extends BaseAdapter implements StickyListHeadersAdap
             tvCount.setText(num.toString());
 
             // 处理飞入到购物车的动画
-            //            flyToShoppingCart(v);
-            //
-            //            // 修改气泡提示
-            //            if(count==null) {
-            //                count = (TextView) container.findViewById(R.id.fragment_goods_tv_count);
-            //            }
-            //
-            //            if(num>0){
-            //                count.setVisibility(View.VISIBLE);
-            //            }
-            //            Integer totalNum=ShoppingCartManager.getInstance().getTotalNum();
-            //            count.setText(totalNum.toString());
+            flyToShoppingCart(v);
+
+            // 修改气泡提示
+            if (count == null) {
+                count = (TextView) container.findViewById(R.id.fragment_goods_tv_count);
+            }
+            if (num > 0) {
+                count.setVisibility(View.VISIBLE);
+            }
+            Integer totalNum = ShoppingCartManager.getInstance().getTotalNum();
+            Logger.i("数量: "+totalNum);
+            count.setText(totalNum+"");
         }
+
 
         /**
          * 点击减少商品
@@ -238,12 +241,58 @@ public class MyGroupAdapter extends BaseAdapter implements StickyListHeadersAdap
             tvCount.setText(num.toString());
 
             // 处理购物车气泡的显示
-            //            Integer totalNum=ShoppingCartManager.getInstance().getTotalNum();
-            //            if(totalNum==0){
-            //                count.setVisibility(View.INVISIBLE);
-            //            }
-            //            count.setText(totalNum.toString());
+            Integer totalNum = ShoppingCartManager.getInstance().getTotalNum();
+            if (totalNum == 0) {
+                count.setVisibility(View.INVISIBLE);
+            }
+            count.setText(totalNum.toString());
         }
+
+
+        private void flyToShoppingCart(View v) {
+            // 1、获取该控件所在的位置
+            int[] location = new int[2];
+            v.getLocationOnScreen(location);// 获取到控件所在整个屏幕的位置
+
+            // 2、获取目标位置（购物车图片所在位置）
+            int[] targetLocation = new int[2];
+            // 将Activity加载控件容器获取到
+            if (container == null) {
+                container = (FrameLayout) UiUtils.getContainder(v, R.id.seller_detail_container);
+            }
+            container.findViewById(R.id.cart).getLocationOnScreen(targetLocation);
+
+            // getLocationOnScreen获取控件所在屏幕中的位置，需要在y轴方向将状态栏的高度减掉
+            location[1] -= UiUtils.STATUE_BAR_HEIGHT;
+            targetLocation[1] -= UiUtils.STATUE_BAR_HEIGHT;
+
+            // 创建一个控件，放到“+”按钮地方，执行动画
+            final ImageView iv = getImageView(location, v);
+            Animation animation = AnimationUtils.getAddAnimation(targetLocation, location);
+            iv.startAnimation(animation);
+            animation.setAnimationListener(new AnimationUtils.AnimationListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    if(iv!=null){
+                        container.removeView(iv);
+                    }
+                }
+            });
+        }
+
+        private ImageView getImageView(int[] location, View v) {
+            ImageView iv = new ImageButton(App.getInstance());
+            iv.setX(location[0]);
+            iv.setY(location[1]);
+            iv.setBackgroundResource(R.drawable.food_button_add);
+            // 将该控件放到何处（条目），存在问题，如果将控件放到条目中的话，在点击时执行动画，
+            // 只能在条目中看到控制动画执行，超出条目的范围控件就不可见
+            //            ((ViewGroup)itemView).addView(iv,v.getWidth(),v.getHeight());
+            container.addView(iv, v.getWidth(), v.getHeight());
+
+            return iv;
+        }
+
     }
 
 

@@ -4,8 +4,6 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.yadong.takeout.R;
 import com.yadong.takeout.common.utils.MyToast;
@@ -41,12 +39,6 @@ public class GoodsFragment extends BaseFragment implements
 
     @BindView(R.id.lv_right)
     StickyListHeadersListView mGroupLv;
-
-    @BindView(R.id.tv_count)
-    TextView mTvCount;
-
-    @BindView(R.id.cart)
-    RelativeLayout mCart;
 
     @Inject
     GoodsPresenter mPresenter;
