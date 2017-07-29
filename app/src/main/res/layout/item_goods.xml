@@ -88,13 +88,13 @@
                     android:visibility="gone"/>
 
                 <TextView
-                    android:id="@+id/tv_money"
+                    android:id="@+id/tv_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
-                    android:text="0"
+                    android:text="10"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:visibility="gone"/>
