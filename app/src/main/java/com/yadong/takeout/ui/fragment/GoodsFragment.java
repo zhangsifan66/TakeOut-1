@@ -4,9 +4,12 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.yadong.takeout.R;
 import com.yadong.takeout.common.utils.MyToast;
+import com.yadong.takeout.common.utils.ShoppingCartManager;
 import com.yadong.takeout.dagger.component.AppComponent;
 import com.yadong.takeout.dagger.component.DaggerGoodsComponent;
 import com.yadong.takeout.dagger.module.GoodsModule;
@@ -43,6 +46,13 @@ public class GoodsFragment extends BaseFragment implements
     @Inject
     GoodsPresenter mPresenter;
 
+    @BindView(R.id.fragment_goods_tv_count)
+    TextView mGoodsCount;
+
+    @BindView(R.id.cart)
+    RelativeLayout mCart;
+
+
     private List<StoreMealInfo.GoodsTypeInfo> mHeadData = new ArrayList<>();//头数据集合
     private List<StoreMealInfo.GoodsTypeInfo.GoodsInfo> mBodyData = new ArrayList<>();//普通数据集合
     private MyHeadAdapter mHeadAdapter;
@@ -69,7 +79,20 @@ public class GoodsFragment extends BaseFragment implements
 
     @Override
     public void initViews() {
+        setShopCartCount();
 
+    }
+
+    /**
+     * 设置购物车中商品的数量
+     */
+    private void setShopCartCount() {
+        // 判断购物车中是否有商品，如果有需要对购物车的气泡进行修改
+        Integer totalNum = ShoppingCartManager.getInstance().getTotalNum();
+        if (totalNum > 0) {
+            mGoodsCount.setVisibility(View.VISIBLE);
+            mGoodsCount.setText(totalNum.toString());
+        }
     }
 
     @Override

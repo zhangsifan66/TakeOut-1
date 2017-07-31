@@ -78,6 +78,15 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         mRecyclerView.addOnScrollListener(scrollListener);
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mHomeAdapter!=null){
+            mHomeAdapter.notifyDataSetChanged();
+        }
+    }
+
     @OnClick({R.id.ll_title_search, R.id.ll_title_container})
     public void onViewClicked(View view) {
         switch (view.getId()) {

@@ -12,6 +12,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.yadong.takeout.R;
 import com.yadong.takeout.common.app.App;
+import com.yadong.takeout.common.utils.ShoppingCartManager;
 import com.yadong.takeout.data.net.bean.HomeInfo;
 import com.yadong.takeout.ui.activity.SellerDetailActivity;
 
@@ -150,28 +151,54 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     class SellerHolder extends RecyclerView.ViewHolder {
         private TextView tvTitle;
         private TextView tvCount;
-        private  HomeInfo.DataBean.BodyBean.SellerBean seller;
+        private  HomeInfo.DataBean.BodyBean.SellerBean mSeller;
 
         public SellerHolder(View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
             tvCount = (TextView) itemView.findViewById(R.id.tv_count);
+        }
+
+        public void setData(HomeInfo.DataBean.BodyBean.SellerBean seller) {
+            this.mSeller=seller;
+            tvTitle.setText(seller.name);
+
+
+            // 设置已经购买数量,需要依据商家标识进行区分
+            if (seller.id == ShoppingCartManager.getInstance().sellerId) {
+                Integer num = ShoppingCartManager.getInstance().getTotalNum();
+                if (num > 0) {
+                    tvCount.setVisibility(View.VISIBLE);
+                    tvCount.setText(num.toString());
+                } else {
+                    tvCount.setVisibility(View.GONE);
+                }
+            } else {
+                tvCount.setVisibility(View.GONE);
+            }
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    if (ShoppingCartManager.getInstance().sellerId != mSeller.id) {
+                        // 进入商家时更新购物车商家标识
+                        ShoppingCartManager.getInstance().sellerId = mSeller.id;
+                        ShoppingCartManager.getInstance().name = mSeller.name;
+                        ShoppingCartManager.getInstance().url = mSeller.pic;
+                        ShoppingCartManager.getInstance().sendPrice = mSeller.sendPrice;
+                        // 清除掉上一个商家中选择的商品
+                        ShoppingCartManager.getInstance().clear();
+                    }
+
                     Intent intent = new Intent(App.getInstance(), SellerDetailActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);// 由于使用了Application的上下文，需要增加该配置信息（错误日志中会提示）
-                    intent.putExtra("seller_id", seller.id);
-                    intent.putExtra("name", seller.name);
+                    intent.putExtra("seller_id", mSeller.id);
+                    intent.putExtra("name", mSeller.name);
                     App.getInstance().startActivity(intent);
                 }
             });
-        }
 
-        public void setData(HomeInfo.DataBean.BodyBean.SellerBean seller) {
-            this.seller=seller;
-            tvTitle.setText(seller.name);
         }
     }
 
